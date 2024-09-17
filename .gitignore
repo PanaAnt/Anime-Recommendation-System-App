@@ -6,5 +6,5 @@ src/
 venv/
 backup_sql/
 data/
-test.ipynb
-recommendation_script.py
+test
+recommendation_script
