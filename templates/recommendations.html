@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Recommendations for {{ anime.title }}</h1>
+
+        <div class="recommendations-grid">
+            {% for recommendation in recommendations %}
+            <div class="recommendation-item">
+                <img src="{{ recommendation['main_picture'] }}" alt="{{ recommendation['title'] }}" class="anime-image">
+                <strong>{{ recommendation['title'] }}</strong>
+                <p>Score: {{ recommendation['score'] }}</p>
+                <a href="{{ recommendation['url'] }}" target="_blank">More Info</a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <a href="/" class="back-button">Back to Search</a>
+    </div>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Search for Anime</h2>
+<form method="POST" action="{{ url_for('recommendations') }}" class="search-container">
+    <!-- Input field and button are now next to each other -->
+    <div class="input-button-wrapper">
+        <input type="text" id="title" name="title" placeholder="Enter anime title" required onkeyup="getTitleSuggestions()">
+        <input type="hidden" id="anime_id" name="anime_id">
+        <button class="button-1" type="submit">Get Recommendations</button>
+    </div>
+
+    <ul id="title-suggestions" class="suggestions-list"></ul>
+</form>
+
+{% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% endif %}
+
+<!-- Top 10 Anime Section -->
+<h2>Current Top 10 Anime</h2>
+<div class="top-anime-grid">
+    {% for anime in top_anime %}
+        <div class="anime-item">
+            <img src="{{ anime['image_url'] }}" alt="{{ anime['title'] }}" class="anime-image">
+            <strong>{{ anime['title'] }}</strong>
+            <p>Score: {{ anime['score'] }}</p>
+            <a href="{{ anime['url'] }}" target="_blank">More Info</a>
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+    function getTitleSuggestions() {
+        const query = document.getElementById('title').value;
+        if (query.length > 2) {
+            fetch(`/title_suggestions?query=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    const suggestionsList = document.getElementById('title-suggestions');
+                    suggestionsList.innerHTML = '';
+                    data.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = item.title;
+                        li.style.cursor = 'pointer';
+                        li.onclick = function() {
+                            document.getElementById('title').value = item.title;
+                            document.getElementById('anime_id').value = item.anime_id;
+                            suggestionsList.innerHTML = '';
+                        };
+                        suggestionsList.appendChild(li);
+                    });
+                });
+        }
+    }
+</script>
+{% endblock %}
+
+
+
+
+
