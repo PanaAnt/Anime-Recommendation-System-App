@@ -7,3 +7,4 @@ venv/
 backup_sql/
 data/
 test.ipynb
+recommendation_script.py
