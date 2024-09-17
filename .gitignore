@@ -6,5 +6,3 @@ src/
 venv/
 backup_sql/
 data/
-test
-recommendation_script
