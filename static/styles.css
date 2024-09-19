@@ -1,3 +1,5 @@
+/* CSS Styling : Note that although this is a visual and interactive way to showcase my recommendation system, the design isn't groundbreaking and it was more of a learning experience for me */
+
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
@@ -9,7 +11,7 @@ body {
 
 h1, h2 {
     text-align: center;
-    color: #ffffff; /* White text */
+    color: #ffffff; /* text-colour */
     margin-top: 20px;
 }
 
@@ -18,7 +20,7 @@ h1, h2 {
     width: 80%;
     margin: 0 auto;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5); /* Slightly darker background */
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly darker background for style */
     border-radius: 10px;
     text-align: center;
 }
@@ -27,7 +29,7 @@ h1, h2 {
 .main-title {
     color: white;
     padding: 20px 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add shadow for title text */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
 }
 
 /* Search Form */
@@ -36,10 +38,10 @@ h1, h2 {
     margin: 40px auto;
 }
 
-/* This wrapper will place the input box and button next to each other */
+/* This wrapper will place the input box and button next to each other for a more clean look */
 .input-button-wrapper {
     display: inline-flex;
-    gap: 10px; /* Adds space between the input box and button */
+    gap: 10px; /* Adds space between the input box and button to look more clean */
 }
 
 .search-container input[type="text"] {
@@ -56,13 +58,13 @@ h1, h2 {
 .search-container input[type="text"]:focus {
     border-color: rgb(130, 41, 148); /* Purple border on focus */
     outline: none;
-    box-shadow: 0 0 10px rgba(130, 41, 148, 0.5); /* Glow effect */
+    box-shadow: 0 0 10px rgba(130, 41, 148, 0.5); /* Glow effect although quite subtle*/
 }
 
 /* Smooth, rounded button */
 .search-container button {
     padding: 5px 10px;
-    background: linear-gradient(90deg, rgba(130, 41, 148, 1), rgba(25, 25, 238, 1)); /* Gradient background */
+    background: linear-gradient(90deg, rgba(130, 41, 148, 1), rgba(25, 25, 238, 1)); /* Gradient background design chose this based on my rgb settings for my pc peripherals */
     color: #ffffff;
     border: none;
     border-radius: 25px;  /* Smooth and rounded edges */
@@ -71,15 +73,15 @@ h1, h2 {
     transition: background 0.3s ease, transform 0.3s ease;
     margin: 9px;
     margin-left: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.534); /* Adds a shadow for smoothness */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.534); /* Adds a shadow for smoothness/detail */
 }
 
 .search-container button:hover {
-    background: linear-gradient(90deg, rgba(25, 25, 238, 1), rgba(130, 41, 148, 1)); /* Reversed gradient on hover */
-    transform: translateY(-3px); /* Slight lift on hover */
+    background: linear-gradient(90deg, rgba(25, 25, 238, 1), rgba(130, 41, 148, 1)); /* Reversed gradient on hover (may change) */
+    transform: translateY(-3px); /* Slight lift on hover for a more interactive look */
 }
 
-/* Suggestions List */
+/* Suggestions List */  /* Had issues with search bar visually these settings fix it */
 .suggestions-list {
     list-style-type: none;
     padding: 0;
@@ -170,7 +172,7 @@ h1, h2 {
     background-color: #45a049;
 }
 
-/* Top Anime Grid */
+/* Top Anime Grid for code below */
 .top-anime-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

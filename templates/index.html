@@ -3,7 +3,7 @@
 {% block content %}
 <h2>Search for Anime</h2>
 <form method="POST" action="{{ url_for('recommendations') }}" class="search-container">
-    <!-- Input field and button are now next to each other -->
+    <!-- Input field and button are now next to each other for a more clean and interactive look -->
     <div class="input-button-wrapper">
         <input type="text" id="title" name="title" placeholder="Enter anime title" required onkeyup="getTitleSuggestions()">
         <input type="hidden" id="anime_id" name="anime_id">

@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 
-# Define the Anime model based on your database
+# Database Columns in PostgreSQL
 class Anime(db.Model):
     __tablename__ = 'anime_info'
     anime_id = db.Column(db.Integer, primary_key=True)
@@ -50,7 +50,7 @@ def index():
     response = requests.get('https://api.jikan.moe/v4/top/anime')
     top_anime_data = response.json()
 
-    # Extract relevant details for the top 10 anime
+    # Extracting relevant details for the top 10 anime
     top_anime = [
         {
             'title': anime['title'],
@@ -61,7 +61,7 @@ def index():
         for anime in top_anime_data['data'][:10]
     ]
 
-    # Log the top_anime data to ensure it is being fetched correctly
+    # Checking if fetched correctly
     print(top_anime)
 
     return render_template('index.html', top_anime=top_anime)
@@ -78,21 +78,21 @@ def title_suggestions():
 # Route to handle anime search and recommendations
 @app.route('/recommendations', methods=['POST'])
 def recommendations():
-    # Convert anime_id to a Python int
-    anime_id = int(request.form.get('anime_id'))  # Convert to Python int
+    # Converting anime_id to a Python int
+    anime_id = int(request.form.get('anime_id'))  
 
-    # Find the anime by its ID
+    # Finding the anime by its ID
     anime = Anime.query.filter(Anime.anime_id == anime_id).first()
 
     if anime:
-        # Get recommendations using the anime_id for content-based filtering
+        # Getting recommendations using the anime_id for content-based filtering technique I went with
         recommended_anime = recommend_anime_by_id(anime.anime_id, anime_df_cleaned, similarity_matrix)
 
         if recommended_anime is not None and len(recommended_anime) > 0:
-            # Prepare recommendations in a list of dictionaries format
+            # Preparing recommendations in a list of dictionaries format
             recommendations_data = []
             for rec_id in recommended_anime:
-                # Ensure that rec_id is also a Python int
+                # Ensuring that rec_id is also a Python int
                 rec_anime = Anime.query.filter(Anime.anime_id == int(rec_id)).first()
                 if rec_anime:
                     recommendations_data.append({

@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
+# Loading environment variables from .env file to hide hidden credentials
 load_dotenv()
 
 class Config:
