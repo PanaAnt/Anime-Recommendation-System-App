@@ -6,4 +6,4 @@ src/
 venv/
 backup_sql/
 data/
-test.ipynb
+testing/
