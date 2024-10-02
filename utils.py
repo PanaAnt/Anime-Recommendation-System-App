@@ -41,7 +41,7 @@ def fetch_and_preprocess_data():
     
     anime_df_cleaned = pd.get_dummies(anime_df_cleaned, columns=['type', 'status', 'rating'], drop_first=True)
 
-    # Step 3: Check if 'genres', 'themes', and 'demographics' exist in the DataFrame
+    # Check if 'genres', 'themes', and 'demographics' exist in the DataFrame
     for column in ['genres', 'themes', 'demographics']:
         if column not in anime_df_cleaned.columns:
             anime_df_cleaned[column] = ''  # Create an empty column if missing
